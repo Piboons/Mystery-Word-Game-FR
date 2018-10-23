@@ -72,14 +72,8 @@ int main()
     {
         //On importe le fichier dictionnaire
         ifstream dico("dico.txt");
-        vector<string> dictionnaire;
-        istream_iterator<string> itFichierDico(dico);
-        istream_iterator<string> finDico;
-        back_insert_iterator<vector<string> > itDicoCopie(dictionnaire);
-        copy(itFichierDico, finDico, itDicoCopie);
-        vector<string>::iterator itDico;
-
-        if (dictionnaire.size()!=0)
+        istream_iterator<string> itDico(dico);
+        if (*itDico != "")
         {
             do
             {
@@ -87,7 +81,6 @@ int main()
                 string motPC;
                 cout << "Generation du mot a deviner en cours, veuillez patienter..." << endl;
 
-                itDico = dictionnaire.begin();
                 int numLigne(rand() % 323577);
                 for (int k(0); k != numLigne; k++)
                 {
